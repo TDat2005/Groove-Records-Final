@@ -1,0 +1,20 @@
+# Phụ thuộc
+node_modules/
+DiaNhac/node_modules/
+vendor/
+
+# Bí mật — TUYỆT ĐỐI không commit
+.env
+.env.*
+!.env.example
+api/config/mail_config.local.php
+api/config/payos.local.php
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Log
+*.log

@@ -1,0 +1,35 @@
+services:
+  web:
+    build: .
+    container_name: voc-web
+    ports:
+      - "8088:80"
+    environment:
+      # Khóa bí mật đọc từ .env (không commit vào git)
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL:-}
+      SMTP_FROM_NAME: ${SMTP_FROM_NAME:-Voc Records}
+      PAYOS_CLIENT_ID: ${PAYOS_CLIENT_ID:-}
+      PAYOS_API_KEY: ${PAYOS_API_KEY:-}
+      PAYOS_CHECKSUM_KEY: ${PAYOS_CHECKSUM_KEY:-}
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: voc-db
+    command: --lower_case_table_names=1
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: clonevocrecord
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql                              # volume giữ dữ liệu
+      - ./database.sql:/docker-entrypoint-initdb.d/init.sql  # tạo bảng lần đầu
+
+volumes:
+  db_data:
