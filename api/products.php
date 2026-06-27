@@ -21,6 +21,10 @@ switch ($action) {
     case 'create':     $controller->create($data); break;
     case 'update':     $controller->update($data); break;
     case 'delete':     $controller->delete($data); break;
+    case 'search':
+        $keyword = $_GET['q'] ?? '';
+        $controller->searchProducts($keyword);
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Hành động không hợp lệ']);
 }
