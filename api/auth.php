@@ -15,6 +15,7 @@ $controller = new AuthController($pdo);
 $action = $_GET['action'] ?? '';
 $data = json_decode(file_get_contents('php://input'), true);
 
+// Điều hướng request theo action
 switch ($action) {
     case 'register':           $controller->register($data); break;
     case 'login':              $controller->login($data); break;
