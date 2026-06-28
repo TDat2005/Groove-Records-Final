@@ -2,11 +2,13 @@
 // Router: Đơn Hàng (orders.php)
 // Entry point - định tuyến request đến OrderController
 // Cap nhat: them xu ly action create don hang
+
+
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/controllers/OrderController.php';
 
 header('Content-Type: application/json');
-
+// Khoi tao ket noi database
 $db = new Database();
 $pdo = $db->getConnection();
 $controller = new OrderController($pdo);
