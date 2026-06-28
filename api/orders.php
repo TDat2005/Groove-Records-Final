@@ -15,12 +15,12 @@ $action = $_GET['action'] ?? '';
 $data = json_decode(file_get_contents('php://input'), true);
 
 switch ($action) {
-    case 'create':        $controller->create($data); break;
-    case 'list':          $controller->list(); break;
-    case 'update_status': $controller->updateStatus($data); break;
-    case 'cancel_order':  $controller->cancelOrder($data); break;
-    case 'order_detail':  $controller->orderDetail(); break;
-    case 'check_status':  $controller->checkStatus(); break;
+    case 'create':        $controller->create($data); break;        // Tao don hang moi
+    case 'list':          $controller->list(); break;               // Lay danh sach don hang
+    case 'update_status': $controller->updateStatus($data); break;  // Cap nhat trang thai
+    case 'cancel_order':  $controller->cancelOrder($data); break;   // Huy don hang
+    case 'order_detail':  $controller->orderDetail(); break;        // Chi tiet don hang
+    case 'check_status':  $controller->checkStatus(); break;        // Kiem tra trang thai
     default:
         echo json_encode(['success' => false, 'message' => 'Hành động không hợp lệ']);
 }
