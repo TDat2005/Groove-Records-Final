@@ -1,4 +1,7 @@
 <?php
+// Cac action ho tro: dashboard_stats, customers_list, inventory_list,
+//                  revenue_report, import_stock (POST), activity_log, health
+// Bao mat: dat bien ADMIN_TOKEN trong .env de bat kiem tra quyen
 // Router: Admin (admin.php)
 // Entry point - định tuyến request đến AdminController
 require_once __DIR__ . '/config/database.php';
