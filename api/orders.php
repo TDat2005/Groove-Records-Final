@@ -24,6 +24,7 @@ switch ($action) {
     case 'order_detail':  $controller->orderDetail(); break;        // Chi tiet don hang
     case 'check_status':  $controller->checkStatus(); break;        // Kiem tra trang thai
     default:
+     // Tra ve loi neu action khong hop le
         echo json_encode(['success' => false, 'message' => 'Hành động không hợp lệ']);
 }
 ?>
