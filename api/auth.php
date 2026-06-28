@@ -1,4 +1,5 @@
 <?php
+// API xác thực người dùng (Đăng ký, Đăng nhập, OTP)
 // Router: Xác Thực (auth.php)
 // Entry point - định tuyến request đến AuthController
 
@@ -14,8 +15,10 @@ $controller = new AuthController($pdo);
 $action = $_GET['action'] ?? '';
 $data = json_decode(file_get_contents('php://input'), true);
 
+// Điều hướng request theo action
 switch ($action) {
     case 'register':           $controller->register($data); break;
+    // Đăng nhập
     case 'login':              $controller->login($data); break;
     // OTP Đăng ký
     case 'send_register_otp':  $controller->sendRegisterOTP($data); break;
@@ -23,7 +26,9 @@ switch ($action) {
     // OTP Quên mật khẩu
     case 'send_forgot_otp':    $controller->sendForgotOTP($data); break;
     case 'verify_forgot_otp':  $controller->verifyForgotOTP($data); break;
+    // Đặt lại mật khẩu sau khi xác thực OTP
     case 'reset_password':     $controller->resetPassword($data); break;
+    // Xử lý khi action không hợp lệ
     default:
         echo json_encode(['success' => false, 'message' => 'Hành động không hợp lệ.']);
 }
