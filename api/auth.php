@@ -1,4 +1,5 @@
 <?php
+// API xác thực người dùng (Đăng ký, Đăng nhập, OTP)
 // Router: Xác Thực (auth.php)
 // Entry point - định tuyến request đến AuthController
 
