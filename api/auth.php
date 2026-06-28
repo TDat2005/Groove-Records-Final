@@ -18,6 +18,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 // Điều hướng request theo action
 switch ($action) {
     case 'register':           $controller->register($data); break;
+    // Đăng nhập
     case 'login':              $controller->login($data); break;
     // OTP Đăng ký
     case 'send_register_otp':  $controller->sendRegisterOTP($data); break;
