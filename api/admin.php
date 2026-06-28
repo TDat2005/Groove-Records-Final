@@ -19,7 +19,14 @@ try {
         case 'customers_list':  $controller->customersList(); break;
         case 'inventory_list':  $controller->inventoryList(); break;
         case 'revenue_report':  $controller->revenueReport(); break;
-        case 'import_stock':    $controller->importStock($data); break;
+        case 'import_stock':
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                http_response_code(405);
+                echo json_encode(['success' => false, 'message' => 'Chi chap nhan phuong thuc POST']);
+                break;
+            }
+            $controller->importStock($data);
+            break;
         case 'activity_log':    $controller->activityLog(); break;
         case 'health':
             echo json_encode(['success' => true, 'message' => 'Admin API hoat dong', 'db' => $pdo ? 'connected' : 'down']);
