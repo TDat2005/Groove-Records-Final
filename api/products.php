@@ -25,3 +25,8 @@ switch ($action) {
         echo json_encode(['success' => false, 'message' => 'Hành động không hợp lệ']);
 }
 ?>
+// Loc san pham
+// Sua truy van
+// Xu ly het hang
+// Format gia
+// Mo ta API
