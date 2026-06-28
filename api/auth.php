@@ -26,6 +26,7 @@ switch ($action) {
     // OTP Quên mật khẩu
     case 'send_forgot_otp':    $controller->sendForgotOTP($data); break;
     case 'verify_forgot_otp':  $controller->verifyForgotOTP($data); break;
+    // Đặt lại mật khẩu sau khi xác thực OTP
     case 'reset_password':     $controller->resetPassword($data); break;
     default:
         echo json_encode(['success' => false, 'message' => 'Hành động không hợp lệ.']);
