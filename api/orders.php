@@ -11,7 +11,9 @@ $db = new Database();
 $pdo = $db->getConnection();
 $controller = new OrderController($pdo);
 
+// Lay action tu query string
 $action = $_GET['action'] ?? '';
+// Doc du lieu JSON tu body request
 $data = json_decode(file_get_contents('php://input'), true);
 
 switch ($action) {
