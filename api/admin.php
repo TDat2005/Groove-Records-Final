@@ -21,6 +21,9 @@ try {
         case 'revenue_report':  $controller->revenueReport(); break;
         case 'import_stock':    $controller->importStock($data); break;
         case 'activity_log':    $controller->activityLog(); break;
+        case 'health':
+            echo json_encode(['success' => true, 'message' => 'Admin API hoat dong', 'db' => $pdo ? 'connected' : 'down']);
+            break;
         default:
             echo json_encode(['success' => false, 'message' => 'Hành động không hợp lệ']);
     }
