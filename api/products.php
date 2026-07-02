@@ -1,5 +1,5 @@
 
-<?php //xungdot
+<?php //thuoc chua
 // Router: Sản Phẩm (products.php)
 // Entry point - định tuyến request đến ProductController
 
