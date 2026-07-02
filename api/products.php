@@ -1,4 +1,4 @@
-<?php
+<?php //tv2 sua lai test xugn dot
 // Router: Sản Phẩm (products.php)
 // Entry point - định tuyến request đến ProductController
 
