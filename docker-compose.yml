@@ -2,25 +2,27 @@ services:
   web:
     build: .
     container_name: voc-web
+    restart: always
     ports:
       - "8088:80"
     environment:
-      # Khóa bí mật đọc từ .env (không commit vào git)
-      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
-      SMTP_PORT: ${SMTP_PORT:-587}
-      SMTP_USER: ${SMTP_USER:-}
-      SMTP_PASS: ${SMTP_PASS:-}
-      SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL:-}
-      SMTP_FROM_NAME: ${SMTP_FROM_NAME:-Voc Records}
-      PAYOS_CLIENT_ID: ${PAYOS_CLIENT_ID:-}
-      PAYOS_API_KEY: ${PAYOS_API_KEY:-}
-      PAYOS_CHECKSUM_KEY: ${PAYOS_CHECKSUM_KEY:-}
+      # Đã điền cứng cấu hình thẳng vào file (Không dùng .env nữa)
+      SMTP_HOST: "smtp.gmail.com"
+      SMTP_PORT: 587
+      SMTP_USER: "email_cua_ban@gmail.com"
+      SMTP_PASS: "mat_khau_ung_dung_gmail"
+      SMTP_FROM_EMAIL: "email_cua_ban@gmail.com"
+      SMTP_FROM_NAME: "Voc Records"
+      PAYOS_CLIENT_ID: "Mã_Client_ID_của_bạn"
+      PAYOS_API_KEY: "Mã_API_Key_của_bạn"
+      PAYOS_CHECKSUM_KEY: "Mã_Checksum_Key_của_bạn"
     depends_on:
       - db
 
   db:
     image: mysql:8.0
     container_name: voc-db
+    restart: always
     command: --lower_case_table_names=1
     environment:
       MYSQL_ROOT_PASSWORD: root
