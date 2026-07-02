@@ -1,4 +1,4 @@
-<?php
+<?php //cap nhat logic lay san pham
 // Router: Sản Phẩm (products.php)
 // Entry point - định tuyến request đến ProductController
 
