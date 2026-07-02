@@ -25,4 +25,3 @@ switch ($action) {
         echo json_encode(['success' => false, 'message' => 'Hành động không hợp lệ']);
 }
 ?>
-
