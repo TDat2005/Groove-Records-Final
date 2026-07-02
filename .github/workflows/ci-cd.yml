@@ -27,13 +27,12 @@ jobs:
       run: |
         find . -name "*.php" -exec php -l {} \;
         
-    # 4. Kiểm tra xem file cấu hình Docker có hợp lệ không
+        # 4. Kiểm tra xem file cấu hình Docker có hợp lệ không
     - name: 🐳 Kiểm tra file Docker Compose
       run: |
-        docker-compose config
+        docker compose config
         
     # 5. Build thử Docker Image xem có chạy thành công không
     - name: 🚀 Chạy thử Build Docker (CI/CD)
       run: |
-        docker-compose build
-        echo "✅ Đã Build Docker thành công! Sẵn sàng mang đi Deploy."
+        docker compose build
