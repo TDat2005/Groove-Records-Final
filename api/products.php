@@ -1,5 +1,5 @@
 
-<?php //xungdot
+<?php //test sap thuoc
 // Router: Sản Phẩm (products.php)
 // Entry point - định tuyến request đến ProductController
 
