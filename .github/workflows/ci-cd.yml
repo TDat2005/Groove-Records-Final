@@ -1,0 +1,39 @@
+name: Groove Records CI/CD
+
+# Kích hoạt CI/CD mỗi khi có người push code hoặc tạo Pull Request vào nhánh main/master
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Kéo code từ GitHub về máy chủ ảo của GitHub
+    - name: 📥 Tải code về môi trường test
+      uses: actions/checkout@v3
+
+    # 2. Cài đặt PHP để kiểm tra lỗi
+    - name: 🐘 Cài đặt môi trường PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        
+    # 3. Chạy vòng lặp kiểm tra toàn bộ file PHP xem có ai gõ sai cú pháp không (Thiếu chấm phẩy, sai ngoặc...)
+    - name: 🔍 Kiểm tra lỗi cú pháp PHP (CI)
+      run: |
+        find . -name "*.php" -exec php -l {} \;
+        
+    # 4. Kiểm tra xem file cấu hình Docker có hợp lệ không
+    - name: 🐳 Kiểm tra file Docker Compose
+      run: |
+        docker-compose config
+        
+    # 5. Build thử Docker Image xem có chạy thành công không
+    - name: 🚀 Chạy thử Build Docker (CI/CD)
+      run: |
+        docker-compose build
+        echo "✅ Đã Build Docker thành công! Sẵn sàng mang đi Deploy."
